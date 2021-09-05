@@ -119,7 +119,7 @@ async def dog(context):
 
 def apod_image():
     nasa_key = 'Paste your nasa key here, you can get it from their API website, google {NASA API} '
-    response = requests.get("https://api.nasa.gov/planetary/apod?api_key={}}".format(nasa_key))
+    response = requests.get("https://api.nasa.gov/planetary/apod?api_key={}".format(nasa_key))
     json_data = json.loads(response.text)
     explanation = json_data['explanation']
     link = json_data['hdurl']
