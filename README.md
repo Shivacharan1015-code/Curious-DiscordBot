@@ -7,6 +7,5 @@ All the libraries to be installed are
 `pip3 install discord`
 `pip3 install bs4`
 `pip3 install lxml`
-`pip3 install json`
 `pip3 install requests`
 `pip3 install discord-py-slash-commad`
