@@ -118,26 +118,34 @@ async def dog(context):
 # Beggining of APOD command
 
 def apod_image():
-    nasa_key = 'Paste your nasa key here, you can get it from their API website, google {NASA API} '
-    response = requests.get("https://api.nasa.gov/planetary/apod?api_key={}".format(nasa_key))
-    json_data = json.loads(response.text)
-    explanation = json_data['explanation']
-    link = json_data['hdurl']
-    embbed = discord.Embed(title="Brief Info",description=explanation,color=0xCEB8FA)
-    embbed.set_image(url=link)
-    return embbed
+  nasa_key = 'Paste your NASA key here'
+  response = requests.get("https://api.nasa.gov/planetary/apod?api_key={}".format(nasa_key))
+  json_data = json.loads(response.text)
+  # print(json_data)
+  explanation = json_data['explanation']
+  link = json_data['url']
+  dat = json_data['date']
+  title = json_data['title']
+  media_type = json_data['media_type']
+  embbed = discord.Embed(title="Link for image/video(click here)",description=explanation,color=0xCEB8FA,url=link)
+  embbed.add_field(name="Date",value=dat,inline=True)
+  embbed.add_field(name='Title',value=title,inline=True)
+  embbed.add_field(name='Media Type',value=media_type,inline=True)
+  embbed.set_image(url=link)
+  return embbed
 
 @client.command(brief='~apod', description='Returns a Astronomy picture of the day; Image provided by NASA, Updates every day[maynot be according to your local time]')
 async def apod(context):
-    print('Apod Command' + str(datetime.datetime.now()) + ' ' +context.author.name)
-    msg = await context.send("Astronomy Picture of the day")
-    await msg.edit(embed=apod_image())
+  print('Apod Command' + str(datetime.datetime.now()) + ' ' +context.author.name)
+  msg = await context.send("Astronomy Picture of the day")
+  await msg.edit(embed=apod_image())
 
 @slash.slash(name='apod',description='Returns Astronomy picture of the day, along with some info about it, SOURCE: NASA')
 async def apod(context):
-    print('Apod Command' + str(datetime.datetime.now()) + ' ' +context.author.name)
-    msg = await context.send("Astronomy Picture of the day")
-    await msg.edit(embed=apod_image())
+  print('Apod Command' + str(datetime.datetime.now()) + ' ' +context.author.name)
+  msg = await context.send("Astronomy Picture of the day")
+  await msg.edit(embed=apod_image())
+  
 
 # End of APOD command ----------------------------------------------------------
 
