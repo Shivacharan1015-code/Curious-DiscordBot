@@ -1,5 +1,5 @@
 # Curious-DiscordBot
-This is a very simple discord bot, I made for first time.
+Lets you request pictures taken by curiosity rover on mars for a specific date, get current co-ordinates of ISS, request food recipies, ...
 
 Make it better and host it if you want, make sure to add you're 'bot key' in the last statement and also paste your API keys which you can get for free from the respective websites.
 
